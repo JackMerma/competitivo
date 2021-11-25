@@ -35,38 +35,46 @@ class bst{
 	void add(int num){ root=add(root,num);}
 };
 
+void init_code(){
+#ifndef ONLINE_JUDGE
+	freopen("input.txt","r",stdin);
+	freopen("output.txt","w",stdout);
+#endif
+}
+
 void solve(){
+	ll num;cin>>num;
 
-	string abc;
-	int pos[26];
-	cin>>abc;
-	string str;
-	cin>>str;
-	int ans=0;
 
-	for(int i=0;i<26;i++)
-		pos[abc[i]-97]=i;
+	if(num%2==0){
+		cout<<"0"<<endl;
+		return;
+	}
+	string str=to_string(num);
 
-	/*
-	for(int i=0;i<26;i++)
-		cout<<pos[i]<<" ";
-	cout<<endl;
-*/
-	for(int i=1;i<str.length();i++)
-		ans+=abs(pos[str[i-1]-97]-pos[str[i]-97]);
+	if(((int)str[0]-'0')%2==0){
+		cout<<"1"<<endl;
+		return;
+	}
 
-	cout<<ans<<endl;
-		
+	for(int i=0;i<str.length();i++){
+		if(((int)str[i]-'0')%2==0){
+			cout<<"2"<<endl;
+			return;
+		}
+	}
+	cout<<"-1"<<endl;
 }
 
 int main(){
 	ios_base::sync_with_stdio(0);
 	cin.tie(0);
+	init_code();
 
-	ll n;
-	cin>>n;
-	while(n--)
+	int n;cin>>n;
+
+	while(n--){
 		solve();
+	}
 
-	return 0;
 }
