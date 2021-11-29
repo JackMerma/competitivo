@@ -22,26 +22,23 @@ void init_code(){
 int main(){
 	ios_base::sync_with_stdio(0);
 	cin.tie(0);
-	//init_code();
+	init_code();
 
-	ll n;cin>>n;
-	vector<ll> data(n);
+	int n;
+	cin>>n;
 
-	for(int i=0;i<n;i++)
-		cin>>data[i];
+	int last=-1;
+	int num;
+	int ans=0;
 
-	vector<ll> pos(n);
-	for(int i=0;i<n;i++)
-		pos[data[i]-1]=i;
-	
-	ll ans=0;
-
-	for(int i=0;i<n-1;i++){
-		for(int u=i+1;u<n;u++){
-			if(pos[u]<pos[i]) ans++;
+	for(int i=0;i<n;i++){
+		cin>>num;
+		if(last!=-1){
+			ans+=abs(last-num);
 		}
+		last=num;
 	}
-	cout<<ans;
+	cout<<ans<<endl;
 
 	return 0;
 }

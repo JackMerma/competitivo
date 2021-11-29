@@ -24,36 +24,15 @@ int main(){
 	cin.tie(0);
 	init_code();
 	
-	int n;cin>>n;
+	string str;
+	cin>>str;
 
-	string winner;
-	int a,b,c;
-	for(int i=0;i<n;i++){
-		int A,B,C;
-		string w;
-		cin>>A>>B>>C;
-		getline(cin,w);
-		if(i==0){
-			a=A;b=B;c=C;
-			winner=w;
-		}else{
-			if(A>a){
-				a=A;b=B;c=C;
-				winner=w;
-			}else if(A==a){
-				if(B>b){
-					a=A;b=B;c=C;
-					winner=w;
-				}else if(B==b){
-					if(C>c){
-						a=A;b=B;c=C;
-						winner=w;
-					}
-				}
-			}
-		}
+	bool ans=true;
+	for(int i=0;i<str.length();i++){
+		if((str[i]-'0')%2==0)
+			ans=false;
 	}
-	cout<<winner<<endl;
+	cout<<((ans)?"HAPPY":"SAD")<<endl;
 
 	return 0;
 }

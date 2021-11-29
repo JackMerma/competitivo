@@ -20,27 +20,6 @@ void init_code(){
 }
 
 void solve(){
-	int k;
-	cin>>k;
-
-	int count=0;
-	for(int i=2;i<=sqrt(k);i++){
-		if(k%i==0){
-			if(i*i==k)
-				count+=i;
-			else
-				count+=i+k/i;
-		}
-	}
-	if(k!=1)
-		count+=1;
-	if(count==k){
-		cout<<"perfect"<<endl;
-	}else if(count>k){
-		cout<<"abundant"<<endl;
-	}else{
-		cout<<"deficient"<<endl;
-	}
 }
 
 int main(){
@@ -49,10 +28,39 @@ int main(){
 	init_code();
 
 	int n;cin>>n;
+	int data[n][n]={0};
+	
+	for(int i=0;i<n;i++){
+		for(int u=0;u<n;u++){
+			cin>>data[i][u];
+		}
+	}
+	int fil[n]={0};
+	int col[n]={0};
 
-	while(n--)
-		solve();
+	int ans=-1;
+	bool found=false;
+	for(int i=0;i<n*n;i++){
+		int ff;cin>>ff;
 
+		for(int i=0;i<n;i++){
+			for(int u=0;u<n;u++){
+				if(data[i][u]==ff){
+					fil[i]++;
+					col[u]++;
+				}
+			}
+		}
+		if(found==false){
+			for(int i=0;i<n;i++){
+				if(fil[i]==n||col[i]==n){
+					ans=ff;
+					found=true;
+				}
+			}
+		}
+	}
+	cout<<ans<<endl;
 	return 0;
 }
 
