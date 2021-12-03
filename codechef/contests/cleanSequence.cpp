@@ -1,8 +1,6 @@
 /** 
-* @author      : Jackson Fernando Merma Portocarrero (jmermap@unsa.edu.pe)
+* @author      : jinnbit
 * @created     : 26/11/2021
-* @filename    : cleanSequence
-* @description : _
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -20,24 +18,26 @@ void init_code(){
 }
 
 void solve(){
-	ll n,k;
+	int n,k;
 	cin>>n>>k;
-	vector<ll> data(n);
+	vector<int> data(n);
 
-	for(int i=0;i<n;i++)
+	for(int i=0;i<n;i++){
 		cin>>data[i];
+	}
 
 	if(k==1){
 		cout<<0<<endl;
 		return;
 	}
+
 	if(k==2){
 		cout<<0<<" "<<0<<endl;
 		return;
 	}
 
-	if(n==k){
-		for(int i=0;i<k;i++){
+	if(k==n){
+		for(int i=0;i<n;i++){
 			cout<<n-2<<" ";
 		}
 		cout<<endl;
@@ -45,14 +45,12 @@ void solve(){
 	}
 
 	for(int i=1;i<=k;i++){
-		ll ans=0;
-		bool first=false;
+		int ans=0;
 		int pri=-1;
 		for(int u=0;u<n;u++){
 			if(data[u]!=i){
-				if(!first){
+				if(pri==-1){
 					pri=data[u];
-					first=true;
 				}else{
 					if(data[u]!=pri){
 						ans++;
@@ -64,6 +62,8 @@ void solve(){
 		cout<<ans<<" ";
 	}
 	cout<<endl;
+
+
 }
 
 int main(){
@@ -71,11 +71,14 @@ int main(){
 	cin.tie(0);
 	init_code();
 
-	int t;cin>>t;
+	int n;
+	cin>>n;
 
-	while(t--){
+	while(n--){
 		solve();
 	}
+
+
 
 	return 0;
 }
